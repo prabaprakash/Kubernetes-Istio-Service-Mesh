@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-9
+spec:
+  selector:
+    matchLabels:
+      app: service-9
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: service-9
+    spec:
+      containers:
+      - name: service-9
+        image: prabakaran/service-9
+        env:
+        - name: API
+          value: "service-10"
+        ports:
+        - containerPort: 80

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-8
+spec:
+  selector:
+    matchLabels:
+      app: service-8
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: service-8
+    spec:
+      containers:
+      - name: service-8
+        image: prabakaran/service-8
+        env:
+        - name: API
+          value: "service-9"
+        ports:
+        - containerPort: 80

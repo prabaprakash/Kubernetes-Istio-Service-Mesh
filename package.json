@@ -1,0 +1,20 @@
+{
+  "name": "service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service-1.js",
+  "scripts": {
+    "service-1": "node service-1.js",
+    "service-2": "node service-2.js",
+    "service-3": "node service-3.js",
+    "service-4": "node service-4.js",
+    "service-5": "node service-5.js",
+    "service-6": "node service-6.js",
+    "service-7": "node service-7.js",
+    "service-8": "node service-8.js",
+    "service-9": "node service-9.js",
+    "service-10": "node service-10.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,90 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: istio-virtualservice
+spec:
+  hosts:
+  - "www.vaayadi.in"
+  gateways:
+  - istio-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /service-1
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-1
+  - match:
+    - uri:
+        prefix: /service-2
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-2
+  - match:
+    - uri:
+        prefix: /service-3
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-3
+  - match:
+    - uri:
+        prefix: /service-4
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-4
+  - match:
+    - uri:
+        prefix: /service-5
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-5
+  - match:
+    - uri:
+        prefix: /service-6
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-6
+  - match:
+    - uri:
+        prefix: /service-7
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-7
+  - match:
+    - uri:
+        prefix: /service-8
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-8
+  - match:
+    - uri:
+        prefix: /service-9
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-9
+  - match:
+    - uri:
+        prefix: /service-10
+    route:
+    - destination:
+        port:
+          number: 80
+        host: service-10
