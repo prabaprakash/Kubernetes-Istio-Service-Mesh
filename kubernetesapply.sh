@@ -7,3 +7,5 @@ do
     kubectl apply -f service.yaml
     cd ..
 done
+kubectl apply -f gateway.yaml
+kubectl apply -f virtualservice.yaml
