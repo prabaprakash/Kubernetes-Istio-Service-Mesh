@@ -1,9 +1,3 @@
-docker login
-
-docker build . --tag prabakaran/service-1
-
-docker push
-
 docker run -it --name=service-1 --network servicetest -e API=service-2 -p 81:80 prabakaran/service-1
 docker run -it --name=service-2 --network servicetest -e API=service-3 prabakaran/service-2
 docker run -it --name=service-3 --network servicetest -e API=service-4 prabakaran/service-3
