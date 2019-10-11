@@ -8,7 +8,7 @@ http.createServer(function (request, response) {
                                     "name": "service-5",
                                 "content":"Young" };
     response.writeHead(200, { 'Content-type': 'text/html' });
-    http.get(process.env['API'], (resp) => {
+    http.get("http://" + process.env['API'], (resp) => {
         let data = '';
 
         // A chunk of data has been recieved.
