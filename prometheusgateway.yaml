@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway
   servers:
   - port:
-      number: 30030
+      number: 80
       name: https-prom
       protocol: HTTP
     hosts:
@@ -27,7 +27,7 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /prometheus
+          prefix: /
       route:
         - destination:
             host: prometheus
