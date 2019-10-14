@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway
   servers:
   - port:
-      number: 30032
+      number: 80
       name: https-tracing
       protocol: HTTP
     hosts:
@@ -26,10 +26,21 @@ spec:
   - tracing-gateway
   http:
   - match:
-     - uri:
-          prefix: /tracing
-     route:
+    - uri:
+       prefix: /
+    route:
       - destination:
-        host: tracing
-        port:
-          number: 80
+         host: tracing
+         port:
+           number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: tracing
+  namespace: istio-system
+spec:
+  host: tracing
+  trafficPolicy:
+    tls:
+      mode: DISABLE
