@@ -10,14 +10,9 @@ spec:
   - port:
       number: 30032
       name: https-tracing
-      protocol: HTTPS
-    tls:
-      mode: SIMPLE
-      serverCertificate: sds
-      privateKey: sds
-      credentialName: telemetry-gw-cert
+      protocol: HTTP
     hosts:
-    - www.southindiantrekkers.org
+    - "*"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -26,14 +21,15 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - www.southindiantrekkers.org
+  - "*"
   gateways:
   - tracing-gateway
   http:
   - match:
-    - port: 30032
-    route:
-    - destination:
+     - uri:
+          prefix: /tracing
+     route:
+      - destination:
         host: tracing
         port:
           number: 80

@@ -10,14 +10,9 @@ spec:
   - port:
       number: 30030
       name: https-prom
-      protocol: HTTPS
-    tls:
-      mode: SIMPLE
-      serverCertificate: sds
-      privateKey: sds
-      credentialName: telemetry-gw-cert
+      protocol: HTTP
     hosts:
-    - www.southindiantrekkers.org
+    - "*"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -26,17 +21,18 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - www.southindiantrekkers.org
+  - "*"
   gateways:
   - prometheus-gateway
   http:
-  - match:
-    - port: 30030
-    route:
-    - destination:
-        host: prometheus
-        port:
-          number: 9090
+    - match:
+      - uri:
+          prefix: /prometheus
+      route:
+        - destination:
+            host: prometheus
+            port:
+              number: 9090
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule

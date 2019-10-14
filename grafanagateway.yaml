@@ -8,16 +8,11 @@ spec:
     istio: ingressgateway
   servers:
   - port:
-      number: 30031
-      name: https-grafana
-      protocol: HTTPS
-    tls:
-      mode: SIMPLE
-      serverCertificate: sds
-      privateKey: sds
-      credentialName: telemetry-gw-cert
+      number: 80
+      name: http-grafana
+      protocol: HTTP
     hosts:
-    - www.southindiantrekkers.org
+    - "*"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -26,17 +21,18 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - www.southindiantrekkers.org
+  - "*"
   gateways:
   - grafana-gateway
   http:
-  - match:
-    - port: 30031
-    route:
-    - destination:
-        host: grafana
+   - match:
+     - uri:
+        prefix: /grafana
+     route:
+     - destination:
         port:
           number: 3000
+        host: grafana
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -48,3 +44,4 @@ spec:
   trafficPolicy:
     tls:
       mode: DISABLE
+---
