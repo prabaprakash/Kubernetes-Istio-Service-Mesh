@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: telemetry-gw-cert
+  namespace: istio-system
+spec:
+  secretName: telemetry-gw-cert
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: www.southindiantrekkers.org
+  dnsNames:
+  - www.southindiantrekkers.org
+  acme:
+    config:
+    - http01:
+        ingressClass: istio
+      domains:
+      - www.southindiantrekkers.org

@@ -1,0 +1,50 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: kiali-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 30029
+      name: https-kiali
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: sds
+      privateKey: sds
+      credentialName: telemetry-gw-cert
+    hosts:
+    - www.southindiantrekkers.org
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kiali-vs
+  namespace: istio-system
+spec:
+  hosts:
+  - www.southindiantrekkers.org
+  gateways:
+  - kiali-gateway
+  http:
+  - match:
+    - port: 30029
+    route:
+    - destination:
+        host: kiali
+        port:
+          number: 20001
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: kiali
+  namespace: istio-system
+spec:
+  host: kiali
+  trafficPolicy:
+    tls:
+      mode: DISABLE
