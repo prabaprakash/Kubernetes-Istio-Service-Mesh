@@ -20,3 +20,8 @@ $ kubectl get pods -n istio-system
 $ kubectl label namespace default istio-injection=enabled
 $ kubectl get namespace -L istio-injection
 ```
+
+# Kube Change Context
+```
+$ kubectl config set-context --current --namespace=default
+```
