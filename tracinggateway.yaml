@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "*"
+  - "tracing.southindiantrekkers.org"
   gateways:
   - tracing-gateway
   http:

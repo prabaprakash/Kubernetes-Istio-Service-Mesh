@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "*"
+  - "prometheus.southindiantrekkers.org"
   gateways:
   - prometheus-gateway
   http:

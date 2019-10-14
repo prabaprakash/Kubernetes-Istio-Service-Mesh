@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "*"
+  - "grafana.southindiantrekkers.org"
   gateways:
   - grafana-gateway
   http:

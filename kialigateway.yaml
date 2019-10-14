@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "*"
+  - "kiali.southindiantrekkers.org"
   gateways:
   - kiali-gateway
   http:
