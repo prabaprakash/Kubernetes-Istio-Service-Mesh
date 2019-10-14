@@ -4,13 +4,13 @@ metadata:
   name: istio-virtualservice
 spec:
   hosts:
-  - "www.vaayadi.in"
+  - "service.southindiantrekkers.org"
   gateways:
   - istio-gateway
   http:
   - match:
     - uri:
-        prefix: /service-1
+        prefix: /
     route:
     - destination:
         port:
