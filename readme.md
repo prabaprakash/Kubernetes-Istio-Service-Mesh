@@ -2,7 +2,9 @@
 
 `https://www.digitalocean.com/community/tutorials/how-to-install-and-use-istio-with-kubernetes`
 
-# Single Node Load Balancer
+# Single Node, Load Balancer
+If you install kubernets from microk8s, minikube. <br />
+you need to setup load balancer manually <br />
 I used nginx reverse proxy to Istio Ingress, for more <br />
 checkout https://github.com/prabaprakash/Kubernetes-Istio-Service-Mesh/blob/master/single_node_nginx.md
 # Ramp Up Ten Services
