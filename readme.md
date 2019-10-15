@@ -7,8 +7,8 @@ If you install kubernets from microk8s, minikube. <br />
 you need to setup load balancer manually <br />
 I used nginx reverse proxy to Istio Ingress, for more <br />
 checkout https://github.com/prabaprakash/Kubernetes-Istio-Service-Mesh/blob/master/single_node_nginx.md
-# Ramp Up Ten Services
 
+# Ramp Up Ten Services
 ```
 $ kubectl config set-context --current --namespace=default
 $ bash kubernetesapply.sh
@@ -18,7 +18,6 @@ to <br />
 service-9, http://services.southindiantrekkers.org/service-9 <br />
 
 # Istio 
-
 ```
 $ bash istiocomponentsapply.sh
 ```
@@ -27,6 +26,10 @@ Prometheus, http://prometheus.southindiantrekkers.org <br />
 Tracing, http://tracing.southindiantrekkers.org <br />
 Grafana, http://grafana.southindiantrekkers.org <br />
 
+# Artillery Load Test
+```
+artillery quick --count 10 -n 20 services.southindiantrekkers.org/service-1
+```
 # Helm Istio Installation
 ```
 $ helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.1.7/charts/
