@@ -8,19 +8,19 @@
 $ kubectl config set-context --current --namespace=default
 $ bash kubernetesapply.sh
 ```
-service-1, http://services.southindiantrekkers.org/service-1
-to
-service-9, http://services.southindiantrekkers.org/service-9
+service-1, http://services.southindiantrekkers.org/service-1 <br />
+to <br />
+service-9, http://services.southindiantrekkers.org/service-9 <br />
 
 # Istio 
 
 ```
 $ bash istiocomponentsapply.sh
 ```
-Kiali, http://kiali.southindiantrekkers.org
-Prometheus, http://prometheus.southindiantrekkers.org
-Tracing, http://tracing.southindiantrekkers.org
-Grafana, http://grafana.southindiantrekkers.org
+Kiali, http://kiali.southindiantrekkers.org <br />
+Prometheus, http://prometheus.southindiantrekkers.org <br />
+Tracing, http://tracing.southindiantrekkers.org <br />
+Grafana, http://grafana.southindiantrekkers.org <br />
 
 # Helm Istio Installation
 ```
