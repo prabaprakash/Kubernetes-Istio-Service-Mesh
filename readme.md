@@ -28,7 +28,7 @@ Grafana, http://grafana.southindiantrekkers.org <br />
 
 # Artillery Load Test
 ```
-artillery quick --count 10 -n 20 services.southindiantrekkers.org/service-1
+artillery quick --count 10 -n 20 http://services.southindiantrekkers.org/service-1
 ```
 # Helm Istio Installation
 ```
