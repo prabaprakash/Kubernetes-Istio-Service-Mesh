@@ -1,6 +1,19 @@
 'use strict';
 
+
 var http = require('http');
+
+function createResponse(networkInterfaces) {
+    let re = networkInterfaces;
+    let res = [];
+    while (typeof re["info.result"] !== "undefined") {
+        res.push(re.info);
+        re = re["info.result"];
+    }
+    res.push(re.info);
+    return res;
+}
+
 http.createServer(function (request, response) {
     var os = require('os');
     var networkInterfaces = os.networkInterfaces();
@@ -21,12 +34,12 @@ http.createServer(function (request, response) {
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
             networkInterfaces['info.result'] = JSON.parse(data);
-            response.write("<pre>"+JSON.stringify(networkInterfaces, undefined, 2)+"</pre>");
+            response.write("<pre>" + JSON.stringify(createResponse(networkInterfaces), undefined, 2) + "</pre>");
             response.end();
         });
 
     }).on("error", (err) => {
-        response.write("<pre>"+JSON.stringify(networkInterfaces, undefined, 2)+"</pre>");
+        response.write("<pre>" + JSON.stringify(createResponse(networkInterfaces), undefined, 2) + "</pre>");
         response.end();
     });
 }).listen(80);
