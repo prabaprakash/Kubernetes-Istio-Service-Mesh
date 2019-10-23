@@ -14,7 +14,34 @@ function createResponse(networkInterfaces) {
     return res;
 }
 
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+
+
 http.createServer(function (request, response) {
+    var services = ['service-2',
+        'service-3',
+        'service-4',
+        'service-5',
+        'service-6',
+        'service-7',
+        'service-8',
+        'service-9',
+        'service-10'];
     var os = require('os');
     var networkInterfaces = os.networkInterfaces();
     networkInterfaces["info"] = {
@@ -23,7 +50,9 @@ http.createServer(function (request, response) {
         "content": "Bright"
     };
     response.writeHead(200, { 'Content-type': 'text/html' });
-    http.get("http://" + process.env['API'], (resp) => {
+    services = shuffle(services);
+    let call = services.pop();
+    http.get("http://" + call + "/?services=" + services.toString(","), (resp) => {
         let data = '';
 
         // A chunk of data has been recieved.

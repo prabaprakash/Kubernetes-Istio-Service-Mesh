@@ -8,7 +8,14 @@ http.createServer(function (request, response) {
                                     "name": "service-8",
                                      "content": "Veto" };
     response.writeHead(200, { 'Content-type': 'text/html' });
-    http.get("http://" + process.env['API'], (resp) => {
+      const services = request.url.split('=')[1].split(",");
+   let call = services.pop();
+    if (call === '') {
+        response.write(JSON.stringify(networkInterfaces, undefined, 2));
+        response.end();
+    }
+    else
+        http.get("http://" + call + "/?services=" + services.toString(","), (resp) => {
         let data = '';
 
         // A chunk of data has been recieved.
